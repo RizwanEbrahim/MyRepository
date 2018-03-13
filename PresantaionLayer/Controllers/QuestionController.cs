@@ -33,6 +33,7 @@ namespace PresantaionLayer.Controllers
                 QuestionTitle = q.QuestionTitle,
                
 
+
             }).ToList();
             return QViewObject;
         }
@@ -54,8 +55,7 @@ namespace PresantaionLayer.Controllers
         public ActionResult AllQuestions()
         {
             var User = QMapToView(IQuestion.GetAllQuestions());
-            User.Select(c => { c.TimeDifference = Convert.ToInt32(DateTime.Now.Subtract(c.QuestionDate).TotalMinutes); return c; }).ToList();
-            ViewData["QCount"] = User.Count();
+             ViewData["QCount"] = User.Count();
             return View(User);
         }
         //Save the question asked in the forum

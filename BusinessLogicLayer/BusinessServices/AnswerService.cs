@@ -47,12 +47,18 @@ namespace BusinessLogicLayer.BusinessServices
         //Get all the answers listed for a corresponding course
         public IEnumerable<AnswerDto> GetAnswers(int questionNo)
         {
-            return AMapToDto(IAnswer.GetAnswers(questionNo));
+            return CalcTimeDiffer(AMapToDto(IAnswer.GetAnswers(questionNo)));
         }
         //Save the question asked in the forum
         public bool CreateAnswer(AnswerDto AnsObject)
         {
             return IAnswer.CreateAnswer(AMapToModel(AnsObject));
+        }
+        //Calculate the time difference of the answer from the current time
+        public IEnumerable<AnswerDto> CalcTimeDiffer(IEnumerable<AnswerDto> answerList)
+        {
+            return answerList.Select(c => { c.TimeDifference = Convert.ToInt32(DateTime.Now.Subtract(c.AnswerDate).TotalMinutes); return c; }).ToList();
+
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.DTO
         public string Answerlist { get; set; }
         public DateTime AnswerDate { get; set; }
         public int QuestionId { get; set; }
-        
+        public int TimeDifference { get; set; }
 
     }
 }

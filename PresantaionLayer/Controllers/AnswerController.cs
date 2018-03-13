@@ -29,7 +29,7 @@ namespace PresantaionLayer.Controllers
             var AnswerObj = AServiceObj.Select(q => new AnswerView
             {
                 Answerlist = q.Answerlist,
-
+                TimeDifference = q.TimeDifference,
                 AnswerDate = q.AnswerDate,
                 AnswerNo= q.Id,
                 QuestionId = q.QuestionId,
@@ -52,24 +52,24 @@ namespace PresantaionLayer.Controllers
         public ActionResult GetAnswers(int qNo, string qTitle, string qDesc)
         {
             TempData["Category"] = qNo;
-            var answerList = AMapToView(IAnswer.GetAnswers(qNo));
-            answerList.Select(c => { c.TimeDifference = Convert.ToInt32(DateTime.Now.Subtract(c.AnswerDate).TotalMinutes); return c; }).ToList();
-
+            var answerList = AMapToView(IAnswer.GetAnswers(qNo));         
             ViewData["QuestionTitle"] = qTitle;
             ViewData["QuestionDesc"] = qDesc;
             return View(answerList);
         }
 
        //Save the answer entered for a specfic question
-        public ActionResult CreateAnswer(string Answerlist)
+        public ActionResult CreateAnswer(string TxtAra)
         {
                 int quNo = (int)TempData["Category"];
+
+         
                 AnswerView AnsObj = new AnswerView();
-                AnsObj.Answerlist = Answerlist;
+                AnsObj.Answerlist = TxtAra;
                 AnsObj.QuestionId = quNo;
                 IAnswer.CreateAnswer(AMapToDto(AnsObj));
                 return RedirectToAction("AllQuestions", "Question");
-            
+           
         }
 
 

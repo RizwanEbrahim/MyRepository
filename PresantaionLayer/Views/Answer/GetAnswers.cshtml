@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "GetAnswers";
+   
 }
 
 <h2>Answers</h2>
@@ -19,8 +20,8 @@
     {
         <b>Enter your answer:</b>
         <div class="form-group">
-            @Html.TextArea("Answerlist", new { @class = "form-control",@id="txtAra", @style = "width:600px;height:100px;" })
-            <div style="margin:5px;">
+           <textarea rows="4" cols="50" id="TxtAra" name="TxtAra" required></textarea>
+              <div style="margin:5px;">
                 <input type="submit" id="BtnSbmt" class="btn btn-info" value="Submit" />
             </div>
         </div>
@@ -66,18 +67,16 @@
 
     </div><br />
 }
-    <script>
- $(document).ready(function(){
-     $("#BtnSbmt").on("click", function ()
-     {
-         if (isEmpty($("#txtAra")))
-         { alert("Label cannot be empty"); }
+
+    <script type="text/javascript">       
+    $(document).ready(function () {
+        $("#BtnSbmt").click(function () {
+            console.log("ready!");
+           
+                alert("There is no value in textbox");
+           
+        });
+    });
+</script>  
    
-  });
-
-});
-</script>
-
-
-
 

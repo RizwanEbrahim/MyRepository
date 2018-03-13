@@ -50,12 +50,18 @@ namespace BusinessLogicLayer.BusinessServices
         //Get all the questions asked in the forum
         public IEnumerable<QuestionDto> GetAllQuestions()
         {
-            return QMApToDto(_IQuest.GetAllQuestions());
+            return CalcTimeDiffer(QMApToDto(_IQuest.GetAllQuestions()));
         }
         //save the questions asked in the forum
         public bool CreateQuestion(QuestionDto QuestionObject )
         {
             return _IQuest.CreateQuestion(QMApToModel(QuestionObject));
+        }
+        //Calculate the time difference of the answer from the current time
+        public IEnumerable<QuestionDto> CalcTimeDiffer(IEnumerable<QuestionDto> questionList)
+        {
+            return questionList.Select(c => { c.TimeDifference = Convert.ToInt32(DateTime.Now.Subtract(c.QuestionDate).TotalMinutes); return c; }).ToList();
+
         }
     }
 }

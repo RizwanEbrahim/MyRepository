@@ -15,7 +15,7 @@ namespace BusinessLogicLayer.DTO
         public DateTime QuestionDate { get; set; }
         public int AnswerCount { get; set; }
         public bool IsAnswered { get; set; }
+        public int TimeDifference { get; set; }
 
-     
     }
 }
