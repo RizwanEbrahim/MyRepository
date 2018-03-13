@@ -1,0 +1,67 @@
+﻿@model IEnumerable<PresantaionLayer.Models.QuestionView>
+
+@{
+    ViewBag.Title = "AllQuestions";
+}
+
+<h2>All Questions</h2>
+
+<p>
+
+</p>
+<div class="row">
+    <div class="col-lg-9">
+        @foreach (var item in Model)
+        {
+            <div class="card" style="width:100%;">
+                <a href="@Url.Action("GetAnswers","Answer",new { qno = item.QuestionId,qtitle=item.QuestionTitle,qdesc=item.QuestionDescription })">
+                    <div class="container">
+
+                        <div class="row">
+                            <div class="col-md-1">
+                                <div style="color:red;">
+                                    <strong style="font-size:40px; margin-left:15px;">
+                                        @Html.DisplayFor(modelItem => item.AnswerCount)
+
+                                    </strong>
+                                    <p>answers</p>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <h4>
+                                    <b style="color:steelblue;">
+                                        @Html.DisplayFor(modelItem => item.QuestionTitle)
+                                    </b>
+                                </h4>
+                                <p style="color:black;">
+                                    @Html.DisplayFor(modelItem => item.QuestionDescription)
+                                </p>
+
+                            </div>
+                            <div class="col-md-2" style="color:grey;padding-left:0px;">
+
+                                <p class="glyphicon glyphicon-question-sign">Asked</p>
+                                <p style="color:lightblue;"> @Html.DisplayFor(modelItem => item.TimeDifference) mins ago </p>
+                                <span style="font-size:12px;">
+                                    @Html.DisplayFor(modelItem => item.QuestionDate)
+                                </span>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            </div><br />
+
+        }
+    </div>
+    <div class="col-lg-3">
+        <div style="color:red;">
+            <strong style="font-size:40px; margin-left:15px;">
+
+
+            </strong>
+
+        </div>
+    </div>
+</div>

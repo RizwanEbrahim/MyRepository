@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PresantaionLayer.Models.AnswerView>
+
+@{
+    ViewBag.Title = "GetAnswers";
+}
+
+<h2>Answers</h2>
+<div class="well" style="padding-top:0px;">
+    <div class="page-header" style="margin:0px;">
+        <h3>  @Html.Label(ViewData["QuestionTitle"].ToString())</h3>
+
+    </div>
+    <div class="panel-body">
+        <p>  @Html.Label(ViewData["QuestionDesc"].ToString())</p>
+    </div>
+</div>
+<div class="collapse" id="viewdetails">
+    @using (Html.BeginForm("CreateAnswer", "Answer", FormMethod.Post))
+    {
+        <b>Enter your answer:</b>
+        <div class="form-group">
+            @Html.TextArea("Answerlist", new { @class = "form-control",@id="txtAra", @style = "width:600px;height:100px;" })
+            <div style="margin:5px;">
+                <input type="submit" id="BtnSbmt" class="btn btn-info" value="Submit" />
+            </div>
+        </div>
+    }
+
+
+</div>
+<p><a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Post Your Answer &raquo;</a></p>
+@foreach (var item in Model)
+{
+    <div class="card" style="background-color:snow;">
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-1">
+                    <div style="color:grey;">
+                        <p style="margin-bottom:0px;"></p>
+                        <strong style="font-size:10px; ">
+                            @Html.DisplayFor(modelItem => item.AnswerDate)
+
+                        </strong>
+
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <h4>
+                        <p style="color:steelblue;">
+                            @Html.DisplayFor(modelItem => item.Answerlist)
+                        </p>
+                    </h4>
+
+
+                </div>
+                <div class="col-md-2">
+                    Answered
+                    <p style="color:lightblue;">
+                        @Html.DisplayFor(modelItem => item.TimeDifference) mins ago
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div><br />
+}
+    <script>
+ $(document).ready(function(){
+     $("#BtnSbmt").on("click", function ()
+     {
+         if (isEmpty($("#txtAra")))
+         { alert("Label cannot be empty"); }
+   
+  });
+
+});
+</script>
+
+
+
+
