@@ -17,20 +17,12 @@ namespace DataAccessLayer.Model
         {
             modelBuilder.HasDefaultSchema("public");
             base.OnModelCreating(modelBuilder);
-            /* modelBuilder
-                .Entity<Course>()
-                  .HasIndex(u => u.code)
-                     .IsUnique();*/
+
         }
         public DbSet<Answer>Answers { get; set; }
         public DbSet<Question>Questions { get; set; }
 
-        //public System.Data.Entity.DbSet<PresantaionLayer.Models.AnswerView> AnswerViews { get; set; }
-
-        // public System.Data.Entity.DbSet<PresantaionLayer.Models.AnswerView> AnswerViews { get; set; }
-
-        // public System.Data.Entity.DbSet<PresantaionLayer.Models.AnswerView> AnswerViews { get; set; }
-    }
+           }
 
 }
 

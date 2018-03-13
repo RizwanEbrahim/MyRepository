@@ -31,7 +31,7 @@ namespace PresantaionLayer.Controllers
                 AnswerCount = q.AnswerCount,
                 QuestionId = q.QuestionId,
                 QuestionTitle = q.QuestionTitle,
-               
+                TimeDifference=q.TimeDifference
 
 
             }).ToList();
@@ -47,7 +47,7 @@ namespace PresantaionLayer.Controllers
                 AnswerCount = QuestionObject.AnswerCount,
                 QuestionId = QuestionObject.QuestionId,
                 QuestionTitle = QuestionObject.QuestionTitle,
-              
+
             };
 
         }
@@ -55,7 +55,7 @@ namespace PresantaionLayer.Controllers
         public ActionResult AllQuestions()
         {
             var User = QMapToView(IQuestion.GetAllQuestions());
-             ViewData["QCount"] = User.Count();
+            ViewData["QCount"] = User.Count();
             return View(User);
         }
         //Save the question asked in the forum
@@ -64,7 +64,7 @@ namespace PresantaionLayer.Controllers
             if (ModelState.IsValid)
             {
                 if (IQuestion.CreateQuestion(QMapToDto(QuestionObject)))
-                    return RedirectToAction("AllQuestions");   
+                    return RedirectToAction("AllQuestions");
             }
             return View(QuestionObject);
         }
