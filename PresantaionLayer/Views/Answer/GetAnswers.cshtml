@@ -5,17 +5,19 @@
    
 }
 
-<h2>Answers</h2>
+
+<h2>Question</h2>
 <div class="well" style="padding-top:0px;">
-    <div class="page-header" style="margin:0px;">
-        <h3>  @Html.Label(ViewData["QuestionTitle"].ToString())</h3>
+    <div class="page-header" style="margin:0px;color:#005999;">
+        <h3> Q. @Html.Label(ViewData["QuestionTitle"].ToString())</h3>
 
     </div>
     <div class="panel-body">
-        <p>  @Html.Label(ViewData["QuestionDesc"].ToString())</p>
+        <p>@ViewBag.QDescription</p>
     </div>
 </div>
 <div class="collapse" id="viewdetails">
+    
     @using (Html.BeginForm("CreateAnswer", "Answer", FormMethod.Post))
     {
         <b>Enter your answer:</b>
@@ -30,23 +32,40 @@
 
 </div>
 <p><a class="btn btn-primary" data-toggle="collapse" data-target="#viewdetails">Post Your Answer &raquo;</a></p>
+<h2>Answers</h2>
+
+
+
+@{ 
+    int i = 0;
+}
 @foreach (var item in Model)
 {
     <div class="card" style="background-color:snow;">
-        <div class="container">
+       
+      
+
+     <div class="container">
 
             <div class="row">
                 <div class="col-md-1">
-                    <div style="color:grey;">
+                    <div >
                         <p style="margin-bottom:0px;"></p>
-                        <strong style="font-size:10px; ">
-                            @Html.DisplayFor(modelItem => item.AnswerDate)
-
-                        </strong>
-
+                             <div class="vote circle"  >     
+                                 <div class="increment up" id="@item.AnswerNo"></div>
+                                <div class="increment down"  id="@item.AnswerNo"></div>
+                                <div class="count"></div>
+                            </div>
+                       
+                       
                     </div>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-1" style="color:grey;margin-top:15px;" >
+                    Votes
+                    <strong  class="voter" style="margin-left:4px;font-size:30px;" id="@item.AnswerNo">
+                    </strong>   
+                </div>
+                <div class="col-md-8">
                     <h4>
                         <p style="color:steelblue;">
                             @Html.DisplayFor(modelItem => item.Answerlist)
@@ -59,7 +78,9 @@
                     Answered
                     <p style="color:lightblue;">
                         @Html.DisplayFor(modelItem => item.TimeDifference) mins ago
+                        @Html.DisplayFor(modelItem => item.AnswerDate)
                     </p>
+                   
                 </div>
             </div>
 
@@ -68,15 +89,5 @@
     </div><br />
 }
 
-    <script type="text/javascript">       
-    $(document).ready(function () {
-        $("#BtnSbmt").click(function () {
-            console.log("ready!");
-           
-                alert("There is no value in textbox");
-           
-        });
-    });
-</script>  
-   
+    
 

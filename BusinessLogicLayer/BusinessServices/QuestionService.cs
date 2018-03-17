@@ -63,5 +63,10 @@ namespace BusinessLogicLayer.BusinessServices
             return questionList.Select(c => { c.TimeDifference = Convert.ToInt32(DateTime.Now.Subtract(c.QuestionDate).TotalMinutes); return c; }).ToList();
 
         }
+
+        public IEnumerable<QuestionDto> SearchQuestions(string searchText)
+        {
+            return QMApToDto(_IQuest.GetSearchQuestions(searchText));
+        }
     }
 }

@@ -60,5 +60,21 @@ namespace BusinessLogicLayer.BusinessServices
             return answerList.Select(c => { c.TimeDifference = Convert.ToInt32(DateTime.Now.Subtract(c.AnswerDate).TotalMinutes); return c; }).ToList();
 
         }
+
+        public bool CheckLogin(string username, string password)
+        {
+            Logged log = new Logged();
+
+            var LogObj = log.UserList.Find(q => q.Username == username);
+            if (LogObj != null)
+            {
+                if (LogObj.Password == password)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

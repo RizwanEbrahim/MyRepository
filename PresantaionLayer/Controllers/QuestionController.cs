@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using BusinessLogicLayer.BusinessServices;
 using PresantaionLayer.Models;
 using BusinessLogicLayer.DTO;
+using System.Web.Script.Serialization;
+
 namespace PresantaionLayer.Controllers
 {
     public class QuestionController : Controller
@@ -74,9 +76,21 @@ namespace PresantaionLayer.Controllers
         {
             return View();
         }
-
-
-
-
+       public JsonResult TimeDifference()
+        {
+            var questionList = QMapToView(IQuestion.GetAllQuestions());
+             var result= questionList.Select(c => { c.TimeDifference = Convert.ToInt32(DateTime.Now.Subtract(c.QuestionDate).TotalSeconds); return c; }).ToList();
+            JavaScriptSerializer jss = new JavaScriptSerializer();
+            //return jss.Deserialize<List<QuestionView>>(result.ToString());
+    //       var finalresult= result.Select(c => c.TimeDifference).ToList();
+            return Json(result);
+        }
+        [HttpGet]
+        public ActionResult Search(string SearchText)
+        {
+            var questions = QMapToView(IQuestion.SearchQuestions(SearchText));
+            return  View("AllQuestions", questions);
+ 
+        }
     }
 }

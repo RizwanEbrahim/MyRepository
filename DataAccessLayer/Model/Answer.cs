@@ -14,7 +14,7 @@ namespace DataAccessLayer.Model
      
         public int QuestionId { get; set; }
         public virtual Question QuestionObject { get; set; }
-
+        public int NoOfVotes { get; set; }
         public DateTime AnswerDate
         {
             get

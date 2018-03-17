@@ -11,5 +11,6 @@ namespace DataAccessLayer.Repository
     {
         IEnumerable<Question> GetAllQuestions();
         bool CreateQuestion(Question QuestionObject);
+        IEnumerable<Question> GetSearchQuestions(string searchText);
     }
 }

@@ -29,3 +29,6 @@ C:\Users\Exp\Documents\Visual Studio 2015\Projects\QUnderFlow\DataAccessLayer\ob
 C:\Users\Exp\Documents\Visual Studio 2015\Projects\QUnderFlow\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.Xnameassas.resources
 C:\Users\Exp\Documents\Visual Studio 2015\Projects\QUnderFlow\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.Xnameassas1.resources
 C:\Users\Exp\Documents\Visual Studio 2015\Projects\QUnderFlow\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.Xnameassasa.resources
+C:\Users\Exp\Documents\Visual Studio 2015\Projects\QUnderFlow\DataAccessLayer\obj\Debug\DataAccessLayer.Migrations.AddMiddleName.resources
+C:\Users\Exp\Documents\Visual Studio 2015\Projects\QUnderFlow\DataAccessLayer\bin\Debug\DataAccessLayer.dll.CodeAnalysisLog.xml
+C:\Users\Exp\Documents\Visual Studio 2015\Projects\QUnderFlow\DataAccessLayer\bin\Debug\DataAccessLayer.dll.lastcodeanalysissucceeded

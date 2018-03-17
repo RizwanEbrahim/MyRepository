@@ -42,5 +42,20 @@ namespace DataAccessLayer.Repository
                 return db.Answers.Where(q => q.QuestionId == questionNo).OrderByDescending(q => q.AnswerDate).ToList();
             }
         }
+        public int UpdateVote(int id,int VoteCount)
+        {
+            using (var db = new DatabaseContext())
+            {
+                var ans=db.Answers.Find(id);
+                if (VoteCount != 0)
+                {
+                    ans.NoOfVotes += VoteCount;
+                }
+                db.SaveChanges();
+                return ans.NoOfVotes;
+
+
+            }
+        }
     }
 }

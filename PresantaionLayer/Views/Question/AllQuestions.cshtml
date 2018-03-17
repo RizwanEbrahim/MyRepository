@@ -3,18 +3,56 @@
 @{
     ViewBag.Title = "AllQuestions";
 }
-
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>
+</head>
 <h2>All Questions</h2>
 
 <p>
 
 </p>
+<div id="loginModal" class="modal fade login-register-form" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content" style="height:302px;width: 322px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span class="glyphicon glyphicon-remove" style="color:red;"></span>
+                </button>
+                <ul class="nav nav-tabs">
+                    <li class="active" ><a style="color:red;" data-toggle="tab" href="#login-form"> Login <span class="glyphicon glyphicon-user" style="color:red;"  ></span></a></li>
+
+                </ul>
+            </div>
+            <div class="modal-body">
+                <div class="tab-content">
+                    <div id="login-form" class="tab-pane fade in active">
+                        <form id="logform" action="/">
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="text" class="form-control" id="logemail" placeholder="Username" name="username" autocomplete="on">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="logpwd" value="password" placeholder="Enter password" name="pwd">
+                            </div>
+                            <span id="valid" style="color:red;"></span><br />
+                            <button type="button" class="btn btn-danger" onclick="CheckLogin()">Login</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="row">
     <div class="col-lg-9">
         @foreach (var item in Model)
         {
             <div class="card" style="width:100%;">
-                <a href="@Url.Action("GetAnswers","Answer",new { qno = item.QuestionId,qtitle=item.QuestionTitle,qdesc=item.QuestionDescription })">
+              <a href="#" onclick="AuthenticateUser(@item.QuestionId,'@item.QuestionTitle','@item.QuestionDescription')" @*data-toggle="modal" data-target="#loginModal"*@>
+         @*<a href="@Url.Action("GetAnswers","Answer",new { qno = item.QuestionId,qtitle=item.QuestionTitle,qdesc=item.QuestionDescription })">*@
                     <div class="container">
 
                         <div class="row">
@@ -41,8 +79,8 @@
                             <div class="col-md-2" style="color:grey;padding-left:0px;">
 
                                 <p class="glyphicon glyphicon-question-sign">Asked</p>
-                                <p style="color:lightblue;"> @Html.DisplayFor(modelItem => item.TimeDifference) mins ago </p>
-                                <span style="font-size:12px;">
+                                <p class="time" style="color:lightblue;"> @Html.DisplayFor(modelItem => item.TimeDifference) mins ago </p>
+                                <span  style="font-size:12px;">
                                     @Html.DisplayFor(modelItem => item.QuestionDate)
                                 </span>
 
@@ -65,3 +103,5 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js"></script>

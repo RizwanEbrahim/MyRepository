@@ -10,5 +10,6 @@ namespace BusinessLogicLayer.BusinessServices
     {
         IEnumerable<AnswerDto> GetAnswers(int questionNo);
         bool CreateAnswer(AnswerDto AnswerObject);
+        bool CheckLogin(string Username, string Password);
     }
 }

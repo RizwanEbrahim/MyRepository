@@ -98,6 +98,10 @@
     <Compile Include="Migrations\201803131052296_Xnameassasa.Designer.cs">
       <DependentUpon>201803131052296_Xnameassasa.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803150553037_AddMiddleName.cs" />
+    <Compile Include="Migrations\201803150553037_AddMiddleName.Designer.cs">
+      <DependentUpon>201803150553037_AddMiddleName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\DatabaseContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +143,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803131052296_Xnameassasa.resx">
       <DependentUpon>201803131052296_Xnameassasa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803150553037_AddMiddleName.resx">
+      <DependentUpon>201803150553037_AddMiddleName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

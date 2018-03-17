@@ -36,5 +36,12 @@ namespace DataAccessLayer.Repository
                 return db.Questions.OrderBy(s => s.AnswerCount).OrderByDescending(s => s.QuestionDate).ToList();
             }
         }
+        public IEnumerable<Question> GetSearchQuestions(string searchText)
+        {
+            using (var db = new DatabaseContext())
+            {
+                return db.Questions.Where(s=>s.QuestionTitle.Contains(searchText)||s.QuestionDescription.Contains(searchText)).OrderBy(s => s.AnswerCount).OrderByDescending(s => s.QuestionDate).ToList();
+            }
+        }
     }
 }

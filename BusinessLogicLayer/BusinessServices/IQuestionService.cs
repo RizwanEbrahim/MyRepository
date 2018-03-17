@@ -10,5 +10,6 @@ namespace BusinessLogicLayer.BusinessServices
     {
        IEnumerable<QuestionDto> GetAllQuestions();
         bool CreateQuestion(QuestionDto QuestionObject);
+        IEnumerable<QuestionDto> SearchQuestions(string searchText);
     }
 }

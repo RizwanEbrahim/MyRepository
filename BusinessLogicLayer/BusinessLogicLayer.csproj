@@ -68,6 +68,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="DTO\AnswerDto.cs" />
     <Compile Include="DTO\QuestionDto.cs" />
+    <Compile Include="DTO\UserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

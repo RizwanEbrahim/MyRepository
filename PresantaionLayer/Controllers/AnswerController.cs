@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLogicLayer.BusinessServices;
 using BusinessLogicLayer.DTO;
+using DataAccessLayer.Repository;
 using PresantaionLayer.Models;
 using System.Web.UI;
 
@@ -52,18 +53,17 @@ namespace PresantaionLayer.Controllers
         public ActionResult GetAnswers(int qNo, string qTitle, string qDesc)
         {
             TempData["Category"] = qNo;
-            var answerList = AMapToView(IAnswer.GetAnswers(qNo));         
             ViewData["QuestionTitle"] = qTitle;
-            ViewData["QuestionDesc"] = qDesc;
-            return View(answerList);
+            ViewBag.QDescription = qDesc;
+            var answerList = AMapToView(IAnswer.GetAnswers(qNo));         
+           
+            return View("GetAnswers",answerList);
         }
 
        //Save the answer entered for a specfic question
         public ActionResult CreateAnswer(string TxtAra)
         {
                 int quNo = (int)TempData["Category"];
-
-         
                 AnswerView AnsObj = new AnswerView();
                 AnsObj.Answerlist = TxtAra;
                 AnsObj.QuestionId = quNo;
@@ -72,7 +72,18 @@ namespace PresantaionLayer.Controllers
            
         }
 
+        public bool CheckLogin(string username,string password)
+        {
+            return IAnswer.CheckLogin(username, password);
+        }
+        //this is a function to update vote of each answer
 
+        public int UpdateVote(int id, int finalcount)
+        {
+            AnswerRepository ansObject = new AnswerRepository();
+            return ansObject.UpdateVote(id, finalcount);
+        }
+   
 
     }
 }

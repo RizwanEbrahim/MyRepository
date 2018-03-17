@@ -139,6 +139,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\ngStorage.js" />
+    <Content Include="Scripts\ngStorage.min.js" />
+    <Content Include="Scripts\QJavaScript.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Question\AllQuestions.cshtml" />
   </ItemGroup>
@@ -151,6 +154,7 @@
     </Compile>
     <Compile Include="Models\AnswerView.cs" />
     <Compile Include="Models\QuestionView.cs" />
+    <Compile Include="Models\UserView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
